@@ -18,27 +18,36 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  Grocery Shopper
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Organize your grocery lists to become an effecient shopper
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  Adding categories to your grocery list is a simple yet effective way to manage your trips to the grocery store. Knowing you've carted all the produce (or meats, or dairy!) in your list allows you to move freely into the upcoming aisles without the need to backtrack because tomatoes were at the bottom of your list. Grocery shopper enables you to effectively shop, section-by-section, through your favorite grocer.
 
 ## Problem ##
   > Describe the problem your product solves.
+  Nobody likes walking all the way back across the store because they didn't see cheese at the bottom of their list. By organizing your lists into simple categories you can tackle sections of the store at once without needing to backtrack.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  It categorizes!!
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  'Dude, best grocery list ever!'
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  Just add your items and be ready to shop.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  'I knew I had all the produce I needed before even leaving the produce section'
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  Check it out!
