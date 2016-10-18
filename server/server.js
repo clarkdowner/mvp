@@ -1,31 +1,37 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var appRoot = require('app-root-path');
 var router = express.Router();
-var Item = require('./models/itemModel');
+var Item = require('./items/itemModel');
 
 
 var app = express();
 mongoose.connect('localhost:27017/shopper');
 
-//not hitting this at all??
-console.log('==========================');
+// app.use(express.static(__dirname + '/app'));
 
-var getItems = function(cb) {
-	db.items.find(function(err, items) {
-		if (err) {
-			console.log(err);
-			cb(err);
-		} else {
-			cb(null, items);
-		}
-	})
-};
 
-router.get('/', function(req, res) {
-  getItems(function(err, items) {
-    res.render('../app/index.html');
-  })
-});
+app.get('/', function(req, res) {
+	res.sendFile(appRoot + '/app/index.html');
+	// res.sendfile(path, {'root': '/path/to/root/directory'});
+})
+// var getItems = function(cb) {
+// 	db.items.find(function(err, items) {
+// 		if (err) {
+// 			console.log(err);
+// 			cb(err);
+// 		} else {
+// 			cb(null, items);
+// 		}
+// 	})
+// };
+
+// app.get('/', function(req, res) {
+// // console.log('==========================');
+// //   getItems(function(err, items) {
+// //     res.send(items);
+//   // })
+// });
 
 // app.get('/', function (req, res) {
 // 	Item.find()
