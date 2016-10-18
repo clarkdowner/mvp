@@ -20,19 +20,28 @@ angular.module('groceryShopper', [
   //     });
   // }])
 
-  .factory('Items', function() {
+  .factory('Items', function($http) {
 
     var allItems = function() {
-      return [
-        {category: 'Produce', name: 'bananas', carted: false}, 
-        {category: 'Produce',name: 'spinach', carted: false}, 
-        {category: 'Produce',name: 'bread', carted: false},
-        {category: 'Dairy',name: 'milk', carted: false},
-        {category: 'Dairy',name: 'yogurt', carted: false},
-        {category: 'Meats',name: 'eggs', carted: false},
-        {category: 'Misc', name: 'tupperware', carted: false}
-      ];
+      return $http({
+        method: 'GET',
+        url: '/',
+      })
+      .then(function(resp) {
+        console.log('resp: ', resp);
+        return resp.data;
+      });
     };
+      // return [
+      //   {category: 'Produce', name: 'bananas', carted: false}, 
+      //   {category: 'Produce',name: 'spinach', carted: false}, 
+      //   {category: 'Produce',name: 'bread', carted: false},
+      //   {category: 'Dairy',name: 'milk', carted: false},
+      //   {category: 'Dairy',name: 'yogurt', carted: false},
+      //   {category: 'Meats',name: 'eggs', carted: false},
+      //   {category: 'Misc', name: 'tupperware', carted: false}
+      // ];
+    // };
 
     var categoryItems = function(category) {
       var categoryArray = [];
@@ -43,6 +52,17 @@ angular.module('groceryShopper', [
         }
       }
       return categoryArray;
+    };
+
+    var addItem = function(itemObj) {
+      console.log('+++++++++++++++++');
+      return $http({
+        method: 'POST',
+        url: '/',
+      })
+      .then(function(resp) {
+        console.log('post req!!!!!!!!!!!!!!!');
+      });
     };
 
     return {

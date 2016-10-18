@@ -6,7 +6,8 @@ angular.module('shopper.produce', [])
     $scope.newItem = '';
 
     $scope.addItem = function(itemToAdd) {
-      $scope.items.push({category: 'Produce', name: itemToAdd, carted: false});
+      Items.addItem({category: 'Produce', name: itemToAdd, carted: false});
+      // $scope.items.push({category: 'Produce', name: itemToAdd, carted: false}); //<-- replace with ajax post
       $scope.newItem = '';
     }
 

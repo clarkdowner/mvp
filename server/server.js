@@ -1,20 +1,22 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var appRoot = require('app-root-path');
-var router = express.Router();
+// var appRoot = require('app-root-path');
 var Item = require('./items/itemModel');
 
 
 var app = express();
 mongoose.connect('localhost:27017/shopper');
 
-// app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + './../app'));
 
 
-app.get('/', function(req, res) {
-	res.sendFile(appRoot + '/app/index.html');
-	// res.sendfile(path, {'root': '/path/to/root/directory'});
-})
+// app.get('/', function(req, res) {
+// 	console.log('res', res);
+// 	res.sendFile(appRoot + '/app/index.html');
+// 	// Item.db.collection('shopper').find().toArray(function(err, res) {
+// 	// 	console.log(res)
+// 	// });
+// })
 // var getItems = function(cb) {
 // 	db.items.find(function(err, items) {
 // 		if (err) {
@@ -57,4 +59,3 @@ app.listen(3000, function () {
 });
 
 module.exports = app;
-module.exports = router;

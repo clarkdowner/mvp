@@ -16,3 +16,4 @@ var GrocerySchema = new mongoose.Schema({
 var Item = mongoose.model('Item', GrocerySchema);
 
 module.exports = Item;
+module.exports = db;
