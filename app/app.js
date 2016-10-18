@@ -1,6 +1,26 @@
+var dummyData = [ 
+  { category: 'Produce', name: 'spinach', carted: false },
+  { category: 'Produce', name: 'bananas', carted: false },
+  { category: 'Produce', name: 'bread', carted: false },
+  { category: 'Dairy', name: 'milk', carted: false },
+  { category: 'Dairy', name: 'yogurt', carted: false },
+  { category: 'Meats', name: 'eggs', carted: false },
+  { category: 'Produce', name: 'bananas', carted: false },
+  { category: 'Produce', name: 'spinach', carted: false },
+  { category: 'Produce', name: 'bananas', carted: false },
+  { category: 'Produce', name: 'spinach', carted: false },
+  { category: 'Produce', name: 'bread', carted: false },
+  { category: 'Dairy', name: 'milk', carted: false },
+  { category: 'Dairy', name: 'yogurt', carted: false },
+  { category: 'Meats', name: 'eggs', carted: false },
+  { category: 'Produce', name: 'not fresh' },
+  { category: 'Produce', name: 'hella fresh' },
+  { category: 'Produce', name: 'run' },
+  { category: 'Produce', name: 'run' },
+  { category: 'Meats', name: 'chicken' } ];
 
 angular.module('groceryShopper', [
-  'shopper.produce',
+  // 'shopper.produce',
   'shopper.dairy',
   'shopper.meats',
   'shopper.grains',
@@ -9,21 +29,24 @@ angular.module('groceryShopper', [
   'ngRoute'
 ])
 
+
   // ADD ROUTES IF TIME
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .otherwise('/');
   }])
 
-  .factory('Items', ['$http', function($http) {
+  .factory('Items', ['$scope', '$http', function($scope, $http) {
 
     var allItemsReq = function() {
+      // return dummyData;
       return $http({
         method: 'GET',
         url: '/'
       }).then(function(resp) {
         console.log('resp: //////////////////// ', resp.data);
-        return resp.data;
+        $scope.data;
+
       })
     };
 
@@ -38,22 +61,14 @@ angular.module('groceryShopper', [
       return categoryArray;
     };
 
+    var addItem = function(itemObj) {
+      console.log('))))))))))))))))))))))))(((((', itemObj);
+    };
+
     return {
       allItemsReq: allItemsReq,
-      categoryItems: categoryItems
+      categoryItems: categoryItems,
+      addItem: addItem
     };
 
   }]);
-
-
-    //DUMMY DATA
-      // return [
-      //   {category: 'Produce', name: 'bananas', carted: false}, 
-      //   {category: 'Produce',name: 'spinach', carted: false}, 
-      //   {category: 'Produce',name: 'bread', carted: false},
-      //   {category: 'Dairy',name: 'milk', carted: false},
-      //   {category: 'Dairy',name: 'yogurt', carted: false},
-      //   {category: 'Meats',name: 'eggs', carted: false},
-      //   {category: 'Misc', name: 'tupperware', carted: false}
-      // ];
-    // };
