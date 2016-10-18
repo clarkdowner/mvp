@@ -1,18 +1,64 @@
 //https://www.terlici.com/2015/04/03/mongodb-node-express.html
 
-var MongoClient = require('mongodb').MongoClient
+var mongoose = require('mongoose');
 
-var URL = 'mongodb://localhost:27017/mydatabase'
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected via mongoose!');
+});
 
-MongoClient.connect(URL, function(err, db) {
-  if (err) return
 
-  var collection = db.collection('foods')
-  collection.insert({name: 'taco', tasty: true}, function(err, result) {
-    collection.find({name: 'taco'}).toArray(function(err, docs) {
-      console.log(docs[0])
-      db.close()
-    })
-  })
+var GrocerySchema = new mongoose.Schema({
+	category: String,
+	name: String,
+	carted: Boolean
+});
+
+var Item = mongoose.model('Item', GrocerySchema);
+
+/*
+
+//create banana in db
+var banana = new Item({category: 'Produce', name: 'banana', carted: false});
+
+//save to database
+banana.save(function(err) {
+	if (err) {
+		console.log(err);
+		return;
+	} else {
+		console.log(banana)
+	}
 })
 
+//queries:
+//find all items
+Item.find(function (err, items) {
+	if (err) {
+		console.log(err);
+		return;
+	} else {
+		console.log(items);
+	}
+});
+
+//find all produce
+Item.find({category: 'Produce'}, function(err, items) {
+	if (err) {
+		console.log(err);
+	} else {
+		console.log(items);
+	}
+});
+
+//delete all produce
+Item.remove({category: 'Produce'}, function(err, items) {
+	if (err) {
+		console.log(err);
+	} else {
+		console.log(items);
+	}
+});
+
+*/

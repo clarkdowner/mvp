@@ -3,8 +3,7 @@
 
 angular.module('groceryShopper', ['ngRoute'])
 
-
-  // Add routes later if time
+  // ADD ROUTES IF TIME
   // .config(['$routeProvider', function($routeProvider) {
   //   $routeProvider
   //     .when('/', {
@@ -50,21 +49,13 @@ angular.module('groceryShopper', ['ngRoute'])
     $scope.newItem = '';
 
     $scope.addItem = function(itemToAdd) {
-      $scope.items.push({name: itemToAdd, carted: false});
+      $scope.items.push({category: 'Produce', name: itemToAdd, carted: false});
       $scope.newItem = '';
     }
 
     $scope.removeAllFromCategory = function() {
       $scope.items = [];
     }
-
-    // $scope.onLoad = function() {
-    //   Items.getAll().then(function(resp) {
-    //     $scope.data.items = resp;
-    //   }).
-    // }
-
-    // $scope.onLoad();
   })
 
   .controller('DairyCtrl', function($scope, Items) {
@@ -73,7 +64,7 @@ angular.module('groceryShopper', ['ngRoute'])
     $scope.newItem = '';
 
     $scope.addItem = function(itemToAdd) {
-      $scope.items.push({name: itemToAdd, carted: false});
+      $scope.items.push({category: 'Dairy', name: itemToAdd, carted: false});
       $scope.newItem = '';
     }
 
@@ -82,5 +73,19 @@ angular.module('groceryShopper', ['ngRoute'])
     }
   })
 
+  .controller('MiscCtrl', function($scope, Items) {
+    $scope.category = 'Misc';
+    $scope.items = Items.categoryItems('Misc');
+    $scope.newItem = '';
+
+    $scope.addItem = function(itemToAdd) {
+      $scope.items.push({category: 'Misc', name: itemToAdd, carted: false});
+      $scope.newItem = '';
+    }
+
+    $scope.removeAllFromCategory = function() {
+      $scope.items = [];
+    }
+  })
 
 
