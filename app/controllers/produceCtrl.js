@@ -2,7 +2,6 @@ angular.module('shopper.produce', [])
 
   .controller('ProduceCtrl', function($scope, Items) {
     $scope.category = 'Produce';
-    $scope.items = Items.categoryItems('Produce');
     $scope.newItem = '';
 
     $scope.addItem = function(itemToAdd) {
@@ -14,4 +13,10 @@ angular.module('shopper.produce', [])
     $scope.removeAllFromCategory = function() {
       $scope.items = [];
     }
+
+    $scope.onLoad = function() {
+      $scope.items = Items.categoryItems('Produce');
+    }
+
+    $scope.onLoad()
   });

@@ -1,5 +1,3 @@
-// var _ = require('underscore');
-
 
 angular.module('groceryShopper', [
   'shopper.produce',
@@ -12,26 +10,43 @@ angular.module('groceryShopper', [
 ])
 
   // ADD ROUTES IF TIME
-  // .config(['$routeProvider', function($routeProvider) {
-  //   $routeProvider
-  //     .when('/', {
-  //       templateUrl: '/all.html',
-  //       controller: 'AllItemsCtrl'
-  //     });
-  // }])
+  .config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+      .otherwise('/');
+  }])
 
-  .factory('Items', function($http) {
+  .factory('Items', ['$http', function($http) {
 
-    var allItems = function() {
+    var allItemsReq = function() {
       return $http({
         method: 'GET',
-        url: '/',
-      })
-      .then(function(resp) {
-        console.log('resp: ', resp);
+        url: '/'
+      }).then(function(resp) {
+        console.log('resp: //////////////////// ', resp.data);
         return resp.data;
-      });
+      })
     };
+
+    var categoryItems = function(category) {
+      var categoryArray = [];
+      var allItems = this.allItemsReq();
+      for (var i = 0; i < allItems.length; i++) {
+        if (allItems[i].category === category) {
+          categoryArray.push(allItems[i]);
+        }
+      }
+      return categoryArray;
+    };
+
+    return {
+      allItemsReq: allItemsReq,
+      categoryItems: categoryItems
+    };
+
+  }]);
+
+
+    //DUMMY DATA
       // return [
       //   {category: 'Produce', name: 'bananas', carted: false}, 
       //   {category: 'Produce',name: 'spinach', carted: false}, 
@@ -42,35 +57,3 @@ angular.module('groceryShopper', [
       //   {category: 'Misc', name: 'tupperware', carted: false}
       // ];
     // };
-
-    var categoryItems = function(category) {
-      var categoryArray = [];
-      var allItems = this.allItems();
-      for (var i = 0; i < allItems.length; i++) {
-        if (allItems[i].category === category) {
-          categoryArray.push(allItems[i]);
-        }
-      }
-      return categoryArray;
-    };
-
-    var addItem = function(itemObj) {
-      console.log('+++++++++++++++++');
-      return $http({
-        method: 'POST',
-        url: '/',
-      })
-      .then(function(resp) {
-        console.log('post req!!!!!!!!!!!!!!!');
-      });
-    };
-
-    return {
-      allItems: allItems,
-      categoryItems: categoryItems
-    }
-
-  })
-
-
-
