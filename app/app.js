@@ -1,7 +1,15 @@
 // var _ = require('underscore');
 
 
-angular.module('groceryShopper', ['ngRoute'])
+angular.module('groceryShopper', [
+  'shopper.produce',
+  'shopper.dairy',
+  'shopper.meats',
+  'shopper.grains',
+  'shopper.frozen',
+  'shopper.misc',
+  'ngRoute'
+])
 
   // ADD ROUTES IF TIME
   // .config(['$routeProvider', function($routeProvider) {
@@ -21,7 +29,8 @@ angular.module('groceryShopper', ['ngRoute'])
         {category: 'Produce',name: 'bread', carted: false},
         {category: 'Dairy',name: 'milk', carted: false},
         {category: 'Dairy',name: 'yogurt', carted: false},
-        {category: 'Meats',name: 'eggs', carted: false}
+        {category: 'Meats',name: 'eggs', carted: false},
+        {category: 'Misc', name: 'tupperware', carted: false}
       ];
     };
 
@@ -43,49 +52,5 @@ angular.module('groceryShopper', ['ngRoute'])
 
   })
 
-  .controller('ProduceCtrl', function($scope, Items) {
-    $scope.category = 'Produce';
-    $scope.items = Items.categoryItems('Produce');
-    $scope.newItem = '';
-
-    $scope.addItem = function(itemToAdd) {
-      $scope.items.push({category: 'Produce', name: itemToAdd, carted: false});
-      $scope.newItem = '';
-    }
-
-    $scope.removeAllFromCategory = function() {
-      $scope.items = [];
-    }
-  })
-
-  .controller('DairyCtrl', function($scope, Items) {
-    $scope.category = 'Dairy';
-    $scope.items = Items.categoryItems('Dairy');
-    $scope.newItem = '';
-
-    $scope.addItem = function(itemToAdd) {
-      $scope.items.push({category: 'Dairy', name: itemToAdd, carted: false});
-      $scope.newItem = '';
-    }
-
-    $scope.removeAllFromCategory = function() {
-      $scope.items = [];
-    }
-  })
-
-  .controller('MiscCtrl', function($scope, Items) {
-    $scope.category = 'Misc';
-    $scope.items = Items.categoryItems('Misc');
-    $scope.newItem = '';
-
-    $scope.addItem = function(itemToAdd) {
-      $scope.items.push({category: 'Misc', name: itemToAdd, carted: false});
-      $scope.newItem = '';
-    }
-
-    $scope.removeAllFromCategory = function() {
-      $scope.items = [];
-    }
-  })
 
 

@@ -10,8 +10,8 @@ db.once('open', function() {
 
 
 var GrocerySchema = new mongoose.Schema({
-	category: String,
-	name: String,
+	category: {type: String, required: true},
+	name: {type: String, required: true},
 	carted: Boolean
 });
 

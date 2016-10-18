@@ -1,4 +1,4 @@
-angular.module('groceryShopper.services', [])
+angular.module('shopper.services', [])
 
 .factory('Items', function ($http) {
 

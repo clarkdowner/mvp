@@ -5,6 +5,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
     <script src="app.js"></script>
+    <script src="controllers/miscCtrl.js"></script>
+    <script src="controllers/meatsCtrl.js"></script>
+    <script src="controllers/grainsCtrl.js"></script>
+    <script src="controllers/frozenCtrl.js"></script>
+    <script src="controllers/dairyCtrl.js"></script>
+    <script src="controllers/produceCtrl.js"></script>
     <!-- <link rel="stylesheet" href="todo.css"> -->
   </head>
   <body>
@@ -39,6 +45,51 @@
         <button type='clearCategory' ng-click='removeAllFromCategory()'>Got It All!</button>
     </div>   
 
+    <div ng-controller='MeatsCtrl'>
+        <h4>{{ category }}</h4>
+        <ul ng-repeat='item in items'>
+            <input type='checkbox' ng-model='item.carted'>
+            <span id='{{ item.name }}'>{{ item.name }}</span>
+        </ul>
+
+        <form ng-submit='addItem(newItem)'>
+            <input type="text" ng-model="newItem" placeholder="add meat item">
+        <input class="btn-primary" type="submit" value="add">
+        </form>
+
+        <button type='clearCategory' ng-click='removeAllFromCategory()'>Got It All!</button>
+    </div> 
+
+    <div ng-controller='GrainsCtrl'>
+        <h4>{{ category }}</h4>
+        <ul ng-repeat='item in items'>
+            <input type='checkbox' ng-model='item.carted'>
+            <span id='{{ item.name }}'>{{ item.name }}</span>
+        </ul>
+
+        <form ng-submit='addItem(newItem)'>
+            <input type="text" ng-model="newItem" placeholder="add grains item">
+        <input class="btn-primary" type="submit" value="add">
+        </form>
+
+        <button type='clearCategory' ng-click='removeAllFromCategory()'>Got It All!</button>
+    </div>
+
+    <div ng-controller='FrozenCtrl'>
+        <h4>{{ category }}</h4>
+        <ul ng-repeat='item in items'>
+            <input type='checkbox' ng-model='item.carted'>
+            <span id='{{ item.name }}'>{{ item.name }}</span>
+        </ul>
+
+        <form ng-submit='addItem(newItem)'>
+            <input type="text" ng-model="newItem" placeholder="add frozen item">
+        <input class="btn-primary" type="submit" value="add">
+        </form>
+
+        <button type='clearCategory' ng-click='removeAllFromCategory()'>Got It All!</button>
+    </div>
+
     <div ng-controller='MiscCtrl'>
         <h4>{{ category }}</h4>
         <ul ng-repeat='item in items'>
@@ -47,12 +98,12 @@
         </ul>
 
         <form ng-submit='addItem(newItem)'>
-            <input type="text" ng-model="newItem" placeholder="add dairy item">
+            <input type="text" ng-model="newItem" placeholder="add miscelaneous item">
         <input class="btn-primary" type="submit" value="add">
         </form>
 
         <button type='clearCategory' ng-click='removeAllFromCategory()'>Got It All!</button>
-    </div> 
+    </div>
 
   </body>
 </html>
